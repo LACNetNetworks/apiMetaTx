@@ -14,7 +14,7 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
-const modifiers = {chainId: 648541,gasPrice: 0,type: 0,gasLimit: 5000000};
+const modifiers = {gasPrice: 0,type: 0,gasLimit: 5000000};
 
 // Rate limiting
 const limiter = rateLimit({
@@ -26,8 +26,8 @@ app.use(limiter);
 // Configuración del provider y wallet
 const provider = new ethers.JsonRpcProvider(process.env.RPC_URL);
 
-const network = await provider.getNetwork();
-modifiers.chainId = Number(network.chainId);
+//const network = await provider.getNetwork();
+//modifiers.chainId = Number(network.chainId);
 
 console.log("Using RPC URL:", process.env.RPC_URL);
 const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
