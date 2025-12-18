@@ -25,6 +25,10 @@ app.use(limiter);
 
 // Configuración del provider y wallet
 const provider = new ethers.JsonRpcProvider(process.env.RPC_URL);
+
+const network = await provider.getNetwork();
+modifiers.chainId = Number(network.chainId);
+
 console.log("Using RPC URL:", process.env.RPC_URL);
 const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
 console.log("Using wallet address:", wallet.address);
