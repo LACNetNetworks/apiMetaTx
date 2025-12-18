@@ -1,9 +1,11 @@
-require('dotenv').config();
-const express = require('express');
-const { ethers } = require('ethers');
-const rateLimit = require('express-rate-limit');
-const helmet = require('helmet');
-const cors = require('cors');
+import dotenv from 'dotenv';
+import express from 'express';
+import { ethers } from 'ethers';
+import rateLimit from 'express-rate-limit';
+import helmet from 'helmet';
+import cors from 'cors';
+
+dotenv.config();
 
 const app = express();
 
@@ -23,10 +25,6 @@ app.use(limiter);
 
 // Configuración del provider y wallet
 const provider = new ethers.JsonRpcProvider(process.env.RPC_URL);
-
-const network = await provider.getNetwork();
-modifiers.chainId = Number(network.chainId);
-
 console.log("Using RPC URL:", process.env.RPC_URL);
 const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
 console.log("Using wallet address:", wallet.address);

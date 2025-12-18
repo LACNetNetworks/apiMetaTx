@@ -1,9 +1,10 @@
 {
   "name": "metatxforwarder-api",
   "version": "1.0.0",
+  "type": "module",
   "description": "API REST para administrar el contrato MetaTxForwarder",
   "main": "server.js",
-  "scripts": {
+    "scripts": {
     "run": "node server.js",
     "dev": "nodemon server.js"
 },
